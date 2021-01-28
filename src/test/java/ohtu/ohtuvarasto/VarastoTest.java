@@ -65,4 +65,10 @@ public class VarastoTest {
         assertEquals(5, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void kuormitettuKonstruktorissa() {
+        Varasto uusi3 = new Varasto(100, 0);
+        assertEquals(100, uusi3.getTilavuus(), vertailuTarkkuus);
+    }
+
 }
