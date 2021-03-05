@@ -4,9 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Varasto mehua = new Varasto(100.0);
+        Varasto mehua = new Varasto(10);
         Varasto olutta = new Varasto(100.0, 20.2);
-
+        System.out.println(mehua);
+/*
         System.out.println("Luonnin jälkeen:");
         System.out.println("Mehuvarasto: " + mehua);
         System.out.println("Olutvarasto: " + olutta);
@@ -54,5 +55,6 @@ public class Main {
         saatiin = mehua.otaVarastosta(-32.9);
         System.out.println("saatiin " + saatiin);
         System.out.println("Mehuvarasto: " + mehua);
+*/
     }
 }

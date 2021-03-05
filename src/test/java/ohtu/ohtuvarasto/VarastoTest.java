@@ -39,6 +39,22 @@ public class VarastoTest {
     }
 
     @Test
+    public void lisaysMeneeYli() {
+        varasto.lisaaVarastoon(11);
+
+        // saldon pitäisi olla sama kun lisätty määrä
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenLisays() {
+        varasto.lisaaVarastoon(-8);
+
+        // saldon pitäisi olla sama kun lisätty määrä
+        assertEquals(0.0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
     public void lisaysLisaaPienentaaVapaataTilaa() {
         varasto.lisaaVarastoon(8);
 
@@ -53,6 +69,14 @@ public class VarastoTest {
         double saatuMaara = varasto.otaVarastosta(2);
 
         assertEquals(2, saatuMaara, vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivisenMaaranOttaminenVarastosta() {
+        Varasto uusi3 = new Varasto(100, 10);
+        varasto.otaVarastosta(-1);
+
+        assertEquals(10, uusi3.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
@@ -71,4 +95,36 @@ public class VarastoTest {
         assertEquals(100, uusi3.getTilavuus(), vertailuTarkkuus);
     }
 
+    @Test
+    public void kuormitettuKonstruktorissaNegatiivinenTilavuus() {
+        Varasto uusi3 = new Varasto(-100, 0);
+        assertEquals(0.0, uusi3.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void kuormitettuKonstruktorissaNegatiivinenAlkusaldo() {
+        Varasto uusi3 = new Varasto(100, -5);
+        assertEquals(0.0, uusi3.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void KonstruktorissaNegatiivinenAlkusaldo() {
+        Varasto uusi = new Varasto(-100);
+        assertEquals(0.0, uusi.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void otaVarastotaEnemmanKuinSaldo() {
+        Varasto uusi = new Varasto(100, 10);
+        uusi.otaVarastosta(20);
+        assertEquals(0.0, uusi.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void merkkijonoEsityss() {
+        varasto.lisaaVarastoon(5);
+        String merkkijono = "saldo = 5.0, viel� tilaa 5.0";
+        String merkkijono2 = varasto.toString();
+        assertEquals(merkkijono, merkkijono2);
+    }
 }
