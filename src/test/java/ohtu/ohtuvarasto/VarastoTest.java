@@ -119,14 +119,13 @@ public class VarastoTest {
         uusi.otaVarastosta(20);
         assertEquals(0.0, uusi.getSaldo(), vertailuTarkkuus);
     }
-/*
+
     @Test
     public void merkkijonoEsityss() {
-        varasto.lisaaVarastoon(5);
-        String merkkijono = "saldo = 5.0, viel‰ tilaa 5.0";
-        String merkkijono2 = varasto.toString();
-        assertEquals(merkkijono, merkkijono2);
+
+        String merkkijono = varasto.toString();
+
+        assertEquals(merkkijono, "saldo = 0.0, viel√§ tilaa 10.0");
     }
-*/
     }
 
