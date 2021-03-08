@@ -14,10 +14,12 @@ public class VarastoTest {
 
     Varasto varasto;
     double vertailuTarkkuus = 0.0001;
+    Varasto varasto5;
 
     @Before
     public void setUp() {
         varasto = new Varasto(10);
+        varasto5 = new Varasto(10);
     }
 
     @Test
@@ -119,14 +121,13 @@ public class VarastoTest {
         uusi.otaVarastosta(20);
         assertEquals(0.0, uusi.getSaldo(), vertailuTarkkuus);
     }
-/*
+
     @Test
     public void merkkijonoEsityss() {
-        varasto.lisaaVarastoon(5);
-        String merkkijono = "saldo = 5.0, vielä tilaa 5.0";
-        String merkkijono2 = varasto.toString();
-        assertEquals(merkkijono, merkkijono2);
-    }
-*/
+
+        String merkkijono = varasto.toString();
+
+        assertEquals(merkkijono, "saldo = 0.0, vielä tilaa 10.0");
     }
 
+}
