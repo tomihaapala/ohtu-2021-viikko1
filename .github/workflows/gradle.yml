@@ -26,5 +26,5 @@ jobs:
       run: ./gradlew jacocoTestReport
     - name: Data to codecov
       run: bash <(curl -s https://codecov.io/bash)
-    -name: Checkstyle
+    - name: Checkstyle
       run: ./gradlew checkstyleMain
