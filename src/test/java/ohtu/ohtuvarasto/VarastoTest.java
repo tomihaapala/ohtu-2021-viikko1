@@ -129,7 +129,7 @@ public class VarastoTest {
 
         assertEquals(merkkijono, "saldo = 0.0, viel‰ tilaa 10.0");
 
-        assertEquals(merkkijono, "saldo = 0.0, viel√§ tilaa 10.0");
+        assertEquals(merkkijono, "saldo = 0.0, viel‰ tilaa 10.0");
     }
 
 }
