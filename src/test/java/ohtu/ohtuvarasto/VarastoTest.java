@@ -127,12 +127,9 @@ public class VarastoTest {
 
         String merkkijono = varasto.toString();
 
-<<<<<<< HEAD
         assertEquals(merkkijono, "saldo = 0.0, vielä tilaa 10.0");
-=======
+
         assertEquals(merkkijono, "saldo = 0.0, vielÃ¤ tilaa 10.0");
-    }
->>>>>>> 76e43fe7f519c5e43f0acebb1455ea3da0931e25
     }
 
 }
