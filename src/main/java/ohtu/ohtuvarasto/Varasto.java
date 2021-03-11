@@ -9,7 +9,10 @@ public class Varasto {
     // --- konstruktorit: ---
     public Varasto(double tilavuus) {  // tilavuus on annettava
         if (tilavuus > 0.0) {
-            this.tilavuus = tilavuus;
+            if (tilavuus > 2.0) {
+                this.tilavuus = tilavuus;
+            }
+
         } else // virheellinen, nollataan
         {
             this.tilavuus = 0.0;  // => käyttökelvoton varasto
@@ -18,19 +21,26 @@ public class Varasto {
     }
 
     public Varasto(double tilavuus, double alkuSaldo) { // kuormitetaan
-        if (tilavuus > 0.0) {
-            this.tilavuus = tilavuus;
-        } else // virheellinen, nollataan
-        {
-            this.tilavuus = 0.0;  // => käyttökelvoton varasto
-        }
-        if (alkuSaldo < 0.0) {
+
+        setTilavuus(tilavuus);
+
+        if (alkuSaldo <= 0.0) {
+            alkusaldoNegatiivinen(tilavuus, alkuSaldo);
             this.saldo = 0.0;
         } else if (alkuSaldo <= tilavuus) // mahtuu
         {
             this.saldo = alkuSaldo;
         } else {
             this.saldo = tilavuus;  // täyteen ja ylimäärä hukkaan!
+        }
+    }
+
+    public void setTilavuus(double tilavuus) {
+        if (tilavuus > 0.0) {
+            this.tilavuus = tilavuus;
+        } else // virheellinen, nollataan
+        {
+            this.tilavuus = 0.0;  // => käyttökelvoton varasto
         }
     }
 
@@ -79,5 +89,17 @@ public class Varasto {
     // --- Merkkijonoesitys Varasto-oliolle: ----
     public String toString() {
         return ("saldo = " + saldo + ", viel� tilaa " + paljonkoMahtuu());
+    }
+
+    private void alkusaldoNegatiivinen(double tilavuus1, double alkuSaldo) {
+        if (alkuSaldo < 0.0) {
+
+            this.saldo = 0.0;
+        } else if (alkuSaldo <= tilavuus) // mahtuu
+        {
+            this.saldo = alkuSaldo;
+        } else {
+            this.saldo = tilavuus;  // täyteen ja ylimäärä hukkaan!
+        }
     }
 }
